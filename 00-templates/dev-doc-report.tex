@@ -1,0 +1,90 @@
+\documentclass[a4paper, 11pt]{report}
+
+%% DEVEL PREAMBLE
+\usepackage{lipsum}
+\usepackage[base]{babel}
+
+
+
+%% PROPER PREAMBLE
+\input{../global-preamble.tex}
+
+\documentsetup{Development Document (Report Class)}{The longer document template}{02 June 2024}{development-doc-report-class}{v1}
+
+\begin{document}
+\makedocumenttitlepage
+
+\tableofcontents
+
+\chapter{Alpha}
+\lipsum[1]
+\section{Alpha-Bravo}
+\subsection{Alpa-Bravo-Charlie}
+\subsubsection{Alpha-Bravo-Charlie-Delta}
+\lipsum[1-3]\\
+
+Here is an external \href{https://camp100.org.uk}{link}\\
+
+Here is in internal \internallink{sec:sus-env}{link (Section \ref*{sec:sus-env})}
+
+\chapter{Callouts}
+Here are some callouts which can be used to \textbf{emphasise} content.
+
+\begin{callout-red}{Title}
+Here is a red callout.\\
+
+This can be used to display warning, for example something changing between document versions or to make a point obvious.
+\end{callout-red}
+
+\begin{callout-orange}{Title}
+Here is an orange callout.\\
+
+Not sure where it gets used, but it might?
+\end{callout-orange}
+
+\begin{callout-green}{Title}
+Here is a green callout.\\
+
+Notice how all the colours used in callouts are actually the Camp 100 colors but at different intensities. 
+\end{callout-green}
+
+\chapter{Floats}
+\begin{table}[ht]
+    \centering
+    {\RaggedRight
+    \begin{tabular}{p{0.2\textwidth} p{0.2\textwidth} p{0.2\textwidth} p{0.3\textwidth}}
+    \tablehead{Name} & \tablehead{Predecessor} & \tablehead{Successor} & \tablehead{Examples}\\
+    Linear & unique & unique & stack, queue\\
+    \hline
+    Hierarchical & unique & many & family tree, management structure\\
+    \hline
+    Graph & many & many & railway map, social network\\
+    \hline
+    Set Structure & no & no & DSALG class\\
+    \hline
+    \end{tabular}
+    } % end of rr     
+    \caption{Classifications of Data Structures}
+    \label{tab:example-table}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/examplecat.jpg}
+    \caption{Example figure, a cat}
+    \label{fig:example-figure}
+\end{figure}
+
+\chapter{Alpha Alpha Alpha Alpha Alpha Alpha Alpha }
+\lipsum
+
+\chapter{Sustainability \& The Environment}
+\label{sec:sus-env}
+\lipsum
+
+\chapter{Alpha Alpha Alpha Alpha Alpha Alpha Alpha Alpha Alpha Alpha }
+\lipsum
+
+\makedocumentbackpage
+
+\end{document}

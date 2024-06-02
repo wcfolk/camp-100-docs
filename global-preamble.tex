@@ -1,0 +1,422 @@
+% %%%
+% Camp 100 Long Form Document Preamble
+% %%%
+
+% basic document setup
+\usepackage{geometry}
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=20mm,
+top=20mm,
+}
+\setlength\parindent{0pt} % get rid of the indent
+\setcounter{tocdepth}{0} % set toc depth to only show chapters
+\setcounter{secnumdepth}{3} % use section numbering for everything up too and including subsubsection
+
+% document global variables, defined for all documents and used to fill blanks etc
+% this comes at the top of the doc as we use these values throughout the entire preamble
+\newcommand{\documentsetup}[5]{%
+  \def\documentTitle{#1}
+  \def\documentSubtitle{#2}
+  \def\publishDate{#3}
+  \def\documentID{#4}
+  \def\documentStatus{#5}
+}
+
+
+
+% packages for general use
+\usepackage[dvipsnames, table]{xcolor}
+\usepackage{graphicx}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{adjustbox}
+\usepackage{fontawesome}
+\usepackage{enumitem}
+\usepackage{datetime2}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{tcolorbox}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{ragged2e}
+\usepackage{float}
+
+
+% configure hyperref to do links & PDF metadata
+\hypersetup{
+    linktoc=none,
+    pdfborderstyle={/S/U/W 1},
+    colorlinks=false,
+    allbordercolors=blue,
+    breaklinks=true,
+}
+% these ones come in a different block as they must be dealt with at the start of the document
+\makeatletter
+\AtBeginDocument{
+  \hypersetup{
+    pdftitle={ \documentTitle },
+    pdfauthor={Camp 100},
+    pdfsubject={ \documentSubtitle },
+    pdfcreator={LaTeX}
+  }
+}
+\makeatother
+% redefine \href so it uses text color blue to make links more obvious
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{\textcolor{blue}{#2}}}
+
+\newcommand{\internallink}[2]{\hyperref[#1]{\textcolor{blue}{#2}}}
+
+
+%% COLORS
+\definecolor{wcf-accent}{HTML}{6d8f41}
+\definecolor{c100-red}{HTML}{F04C58}
+\definecolor{c100-green}{HTML}{087F5C}
+\definecolor{c100-beige}{HTML}{E9E1CA}
+\definecolor{c100-orange}{HTML}{EC7E2C}
+\definecolor{c100-grey}{HTML}{545454}
+
+% setup setup fonts
+% we manually specify to use the `_Light_Oblique' varient of Quicksand for italics as the font doesn't include an italic face by default.
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX, ItalicFont=*_Light_Oblique]{Quicksand}
+\setsansfont[Ligatures=TeX, ItalicFont=*_Light_Oblique]{Quicksand}
+
+% tables
+\renewcommand{\arraystretch}{1.6} % make cells vertically bigger
+
+\newcommand{\tablehead}[1]{\multicolumn{1}{c}{\cellcolor{c100-red}\textcolor{white}{\textbf{#1}}}}
+
+
+
+% Document Title Page
+% adapted from: https://www.reddit.com/r/LaTeX/comments/faij1n/my_first_cover_page_done_in_latex_is_it/
+\newcommand{\makedocumenttitlepage}{\begin{titlepage}
+    \begin{tikzpicture}[overlay,remember picture]
+
+        % \fill[black!2] (current page.south west) rectangle (current page.north east);
+        
+        % line 01
+        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(-.5,-6)$)}}]
+        \shade[rounded corners=18pt, left color=c100-orange, right color=c100-orange] ($(current page.north west)+(-.5,-6)$) rectangle ++(9,1.5);
+        \end{scope}
+        
+        % line 02
+        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(.5,-10)$)}}]
+        \shade[rounded corners=18pt, left color=c100-green ,right color=c100-green] ($(current page.north west)+(0.5,-10)$) rectangle ++(15,1.5);
+        \end{scope}
+        
+        % line 03
+        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north)+(-1.5,-3)$)}}]
+        \shade[rounded corners=12pt, left color=c100-grey, right color=c100-grey] ($(current page.north)+(-1.5,-3)$) rectangle ++(9,0.8);
+        \end{scope}
+        
+        % line 04
+        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north)+(-3,-8)$)}}]
+        \shade[rounded corners=28pt, left color=c100-red, right color=c100-red] ($(current page.north)+(-3,-8)$) rectangle ++(15,1.8);
+        \end{scope}
+        
+        % line 05
+        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(4,-15.5)$)}}]
+        \shade[rounded corners=25pt, left color=c100-green, right color=c100-green] ($(current page.north west)+(4,-15.5)$) rectangle ++(30,1.8);
+        \end{scope}
+        
+        % line 06
+        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(13,-10)$)}},]
+        \shade[rounded corners=22pt, left color=c100-orange,right color=c100-orange] ($(current page.north west)+(13,-10)$) rectangle ++(15,1.5);
+        \end{scope}
+        
+        % line 07
+        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(19,-5.65)$)}},]
+        \shade[rounded corners=12pt, left color=c100-grey,right color=c100-grey] ($(current page.north west)+(19,-5.65)$) rectangle ++(15,0.8);
+        \end{scope}
+        
+        % line 08
+        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(18,-8)$)}},]
+        \shade[rounded corners=8pt, left color=c100-green,right color=c100-green] ($(current page.north west)+(18,-8)$) rectangle ++(15,0.6);
+        \end{scope}
+        
+        % line 09
+        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(20,-9)$)}}]
+        \shade[rounded corners=20pt, left color=c100-red, right color=c100-red] ($(current page.north west)+(20,-9)$) rectangle ++(14,1.2);
+        \end{scope}
+        
+        % logo image (TODO: Make these the same size)
+        \node[inner sep=0pt] () at ($(current page.center)+(5,-11)$){\includegraphics[width=0.45\textwidth]{../global-logo-c100-wide.png}};
+        \node[inner sep=0pt] () at ($(current page.center)+(-5,-11)$){\includegraphics[width=0.45\textwidth]{../global-logo-wcf-wide.png}};
+        
+        \node at ($(current page.center)+(0,-3.5)$) {{\Huge \documentTitle}};
+        
+        \node[text width=\textwidth,align=center] at ($(current page.center)+(0,-5.5)$) {{\Large{\textit{\documentSubtitle}}} \\[2em] \large \publishDate};
+        
+        \end{tikzpicture}
+\end{titlepage}
+}
+
+% Document Back Page
+\newcommand{\makedocumentbackpage}{\newpage
+  \thispagestyle{empty}
+  \begin{tikzpicture}[overlay,remember picture]
+
+      % \fill[black!2] (current page.south west) rectangle (current page.north east);
+      
+      % line 01
+      \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(-.5,-6)$)}}]
+      \shade[rounded corners=18pt, left color=c100-orange, right color=c100-orange] ($(current page.north west)+(-.5,-6)$) rectangle ++(9,1.5);
+      \end{scope}
+      
+      % line 02
+      \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(.5,-10)$)}}]
+      \shade[rounded corners=18pt, left color=c100-green ,right color=c100-green] ($(current page.north west)+(0.5,-10)$) rectangle ++(15,1.5);
+      \end{scope}
+      
+      % line 03
+      \begin{scope}[transform canvas ={rotate around ={45:($(current page.north)+(-1.5,-3)$)}}]
+      \shade[rounded corners=12pt, left color=c100-grey, right color=c100-grey] ($(current page.north)+(-1.5,-3)$) rectangle ++(9,0.8);
+      \end{scope}
+      
+      % line 04
+      \begin{scope}[transform canvas ={rotate around ={45:($(current page.north)+(-3,-8)$)}}]
+      \shade[rounded corners=28pt, left color=c100-red, right color=c100-red] ($(current page.north)+(-3,-8)$) rectangle ++(15,1.8);
+      \end{scope}
+      
+      % line 05
+      \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(4,-15.5)$)}}]
+      \shade[rounded corners=25pt, left color=c100-green, right color=c100-green] ($(current page.north west)+(4,-15.5)$) rectangle ++(30,1.8);
+      \end{scope}
+      
+      % line 06
+      \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(13,-10)$)}},]
+      \shade[rounded corners=22pt, left color=c100-orange,right color=c100-orange] ($(current page.north west)+(13,-10)$) rectangle ++(15,1.5);
+      \end{scope}
+      
+      % line 07
+      \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(19,-5.65)$)}},]
+      \shade[rounded corners=12pt, left color=c100-grey,right color=c100-grey] ($(current page.north west)+(19,-5.65)$) rectangle ++(15,0.8);
+      \end{scope}
+      
+      % line 08
+      \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(18,-8)$)}},]
+      \shade[rounded corners=8pt, left color=c100-green,right color=c100-green] ($(current page.north west)+(18,-8)$) rectangle ++(15,0.6);
+      \end{scope}
+      
+      % line 09
+      \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(20,-9)$)}}]
+      \shade[rounded corners=20pt, left color=c100-red, right color=c100-red] ($(current page.north west)+(20,-9)$) rectangle ++(14,1.2);
+      \end{scope}
+
+    \end{tikzpicture}
+      
+    % textual boxes at the bottom of the page
+    \begin{tikzpicture}[overlay,remember picture]
+      % top left box, textual information about C100
+      \node[rectangle, anchor=north west,
+              rounded corners=18pt,inner sep=11pt,
+              fill=c100-green,
+              minimum height=11em] () at
+              ($(current page.center)+(-9, -3)$)
+              {\parbox[t]{0.55\textwidth}{\color{white} Camp 100, a project by Woodcraft Folk will bring together members of all ages from across the UK to camp together and live by the Woodcraft Folk values for a week in the summer of 2023. The camp celebrates Woodcraft Folk's 100th birthday and will celebrate it's past century while looking forward to the next 100 years.}};
+
+      % top right box, social media contact for C100
+      \node[rectangle, anchor=north west,
+              rounded corners=18pt,inner sep=11pt,
+              fill=c100-red,
+              minimum height=11em] () at
+              ($(current page.center)+(2,-3)$)
+              {\parbox[t]{0.35\textwidth}{\color{white} Find Camp 100 on the internet \begin{itemize}[leftmargin=1.5em]
+                \item[\faInstagram] camp100wcf
+                \item[\faFacebook] camp100wcf
+                \item[\faLink] \texttt{camp100.org.uk}
+              \end{itemize}}};
+      
+      % bottom left box, WCF charity disclaimer
+      \node[rectangle, anchor=north west,
+              rounded corners=18pt,inner sep=11pt,
+              fill=c100-red,
+              minimum height=11em] () at
+              ($(current page.center)+(-9,-8)$)
+              {\parbox[t]{0.4\textwidth}{\color{white} Woodcraft Folk is a registered charity in England \& Wales (1148195) and in Scotland (SC039791), and a limited company, registered in England \& Wales (8133727). Registered office: Holyoake House, Hanover Street, Manchester M60 0AS}};
+      % bottom middle, WCF social media
+      \node[rectangle, anchor=north west,
+              rounded corners=18pt,inner sep=11pt,
+              fill=c100-orange,
+              minimum height=11em] () at
+              ($(current page.center)+(-0.95,-8)$)
+              {\parbox[t]{0.25\textwidth}{\color{white} Find Woodcraft Folk Online \begin{itemize}[leftmargin=1.5em]
+                \setlength\itemsep{0.1em}
+                \item[\faInstagram] woodcraftfolk
+                \item[\faFacebook] woodcraftfolk
+                \item[\faLink] \texttt{woodcraft.org.uk}
+              \end{itemize}}};
+      % bottom right box, WCF logo
+      \node[rectangle, anchor=north west,
+              rounded corners=18pt,inner sep=11pt,
+              fill=c100-green,
+              minimum height=11em] () at
+              ($(current page.center)+(4.5,-8)$)
+              {\parbox[t]{0.2\textwidth}{\color{white} \includegraphics[width=0.2\textwidth]{../global-logo-wcf-black.png}}};
+      % very bottom line, document information
+      \node[rectangle, anchor=north west,
+              rounded corners=12pt,inner sep=11pt,
+              fill=c100-grey] () at
+              ($(current page.center)+(-9,-13)$)
+              {\parbox[t]{0.99\textwidth}{\color{white} \footnotesize{\texttt{\documentID}\ (\texttt{\jobname .tex}) compiled at \texttt{\DTMnow}\ with version \texttt{\documentStatus}}}};
+    \end{tikzpicture}
+  
+
+}
+
+% section titles
+% chapter heading adapted from: https://texblog.net/latex-archive/uncategorized/fancy-chapter-tikz/
+\usepackage[explicit]{titlesec}
+
+% we only want to deal with chapters if document class is a report; as it'll break in articles otherwise
+\makeatletter
+\@ifclassloaded{report}{%
+    \titlespacing*{\chapter}{0pt}{30pt}{60pt}
+
+    \titleformat{\chapter}
+    {\gdef\chapterlabel{}
+    \normalfont\sffamily\Huge\bfseries}
+    {\gdef\chapterlabel{\thechapter\ | }}{0pt}
+    {\begin{tikzpicture}[remember picture,overlay]
+        % line 01
+        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(13,-10)$)}},]
+        \shade[rounded corners=12pt, left color=c100-grey,right color=c100-grey] ($(current page.north west)+(21,-7)$) rectangle ++(15,0.8);
+        \end{scope}
+        % line 02
+        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(13,-10)$)}},]
+        \shade[rounded corners=20pt, left color=c100-red,right color=c100-red] ($(current page.north west)+(17,-9)$) rectangle ++(15,1.3);
+        \end{scope}
+        % line 03
+        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(19,-5.65)$)}},]
+        \shade[rounded corners=12pt, left color=c100-orange,right color=c100-orange] ($(current page.north west)+(19,-5)$) rectangle ++(15,0.8);
+        \end{scope}
+        \node[anchor=west,yshift=1.5em, rectangle,
+                rounded corners=18pt,inner sep=11pt,
+                fill=c100-green] 
+                {\parbox[t]{0.6\textwidth}{\color{white}\chapterlabel#1}};
+    \end{tikzpicture}
+    }
+    % redefine \chapter so it uses pagestyle=fancy
+    \makeatletter
+    \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+    \thispagestyle{fancy}%
+    \global\@topnum\z@
+    \@afterindentfalse
+    \secdef\@chapter\@schapter}
+    \makeatother
+}
+\makeatother
+
+
+
+\titleformat{\section}
+    {\normalfont\LARGE\sffamily\bfseries\color{black}}
+    {\tcbox[colback=c100-green, colframe=c100-green, coltext=white, on line, boxsep=0pt, left=4pt, right=4pt, top=4pt, bottom=4pt]{\thesection}}{0.2em}{#1}
+\titleformat{\subsection}
+    {\normalfont\Large\sffamily\bfseries\color{black}}
+    {\tcbox[colback=c100-green, colframe=c100-green, coltext=white, on line, boxsep=0pt, left=4pt, right=4pt, top=4pt, bottom=4pt]{\thesubsection}}{0.2em}{#1}
+\titleformat{\subsubsection}
+    {\normalfont\large\sffamily\bfseries\color{black}}
+    {\tcbox[colback=c100-green, colframe=c100-green, coltext=white, on line, boxsep=0pt, left=4pt, right=4pt, top=4pt, bottom=4pt]{\thesubsubsection}}{0.2em}{#1}
+
+
+
+
+% headers and footers
+\usepackage{fancyhdr}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\documentTitle}
+\fancyfoot[C]{\textbf{\thepage}\ of \pageref*{LastPage}}
+\fancyfoot[R]{\publishDate}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0.0pt}
+\addtolength{\topmargin}{-1.59999pt}
+\setlength{\headheight}{13.59999pt}
+
+% now we do headers and footers for non-release version watermarks
+\AtBeginDocument{
+    \usepackage{draftwatermark}
+    \DraftwatermarkOptions{
+        stamp=false,
+        text={\documentStatus},
+        color=red!30
+    }
+    \ifthenelse{\equal{\documentStatus}{proof}}{
+        \DraftwatermarkOptions{stamp=true}
+    }%
+    {}% if not set to 1
+    \ifthenelse{\equal{\documentStatus}{draft}}{
+        \DraftwatermarkOptions{stamp=true}
+    }%
+    {}% if not set to 1
+
+    
+}
+
+% callouts
+
+\usepackage[framemethod=default]{mdframed}
+\mdfsetup{skipabove=\topskip,
+skipbelow=\topskip,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=3pt
+}
+
+% Red callout
+\mdfdefinestyle{callout-red}{%
+linecolor=c100-red!70,
+backgroundcolor=c100-red!10,
+topline=false,
+bottomline=false,
+rightline=false,
+frametitlebackgroundcolor=c100-red!30,
+}
+\newenvironment{callout-red}[1]
+    {\begin{mdframed}[style=callout-red,frametitle={#1}]
+        }
+        {
+    \end{mdframed}
+    }
+
+% Orange callout
+\mdfdefinestyle{callout-orange}{%
+linecolor=c100-orange!70,
+backgroundcolor=c100-orange!10,
+topline=false,
+bottomline=false,
+rightline=false,
+frametitlebackgroundcolor=c100-orange!30,
+}
+\newenvironment{callout-orange}[1]
+    {\begin{mdframed}[style=callout-orange,frametitle={#1}]
+        }
+        {
+    \end{mdframed}
+    }
+
+% Green callout
+\mdfdefinestyle{callout-green}{%
+linecolor=c100-green!70,
+backgroundcolor=c100-green!10,
+topline=false,
+bottomline=false,
+rightline=false,
+frametitlebackgroundcolor=c100-green!30,
+}
+\newenvironment{callout-green}[1]
+    {\begin{mdframed}[style=callout-green,frametitle={#1}]
+        }
+        {
+    \end{mdframed}
+    }
