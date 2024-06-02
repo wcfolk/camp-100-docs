@@ -1,5 +1,5 @@
 
-This is the web root of the repository which is used to store the Camp 100 Documents. If you're looking for the actual Camp 100 website, that's over at [camp100.org.uk](camp100.org.uk). 
+This is the web root of the repository which is used to store the Camp 100 Documents. If you're looking for the actual Camp 100 website, that's over at [camp100.org.uk](https://camp100.org.uk). 
 
 ## Documents
 * Templates
