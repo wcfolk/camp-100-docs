@@ -1,0 +1,79 @@
+\documentclass[a4paper, 11pt]{report}
+
+\input{../global-preamble.tex}
+
+\documentsetup{[doc title]}{[doc subtitle]}{[publish date]}{[internal doc id]}{[version]}
+
+\tikzset{
+  c100-speech-callout/.style= {color = white,
+                         draw,
+                         shape=rectangle callout,
+                         fill = c100-green,
+                         rounded corners=0.25em,
+                         line width = 0.1em,
+                         inner xsep = 0.5em,
+                         inner ysep = 0.5em,
+                         callout relative pointer={(1.25cm,-1cm)},
+                         callout pointer width=2cm}
+}
+
+\begin{document}
+\makedocumenttitlepage
+
+\chapter{The Speech Callouts}
+\begin{tikzpicture}[]
+  \node[c100-speech-callout] (tl) at (0,0)
+      {\parbox{0.4\textwidth}{1here is a thing blah blah blah blah blah blah blah blah} };
+
+    \node[c100-speech-callout, fill=c100-red] (tr) at (10,2)
+      {\parbox{0.4\textwidth}{2here is a thing blah blah blah blah blah blah blah blah} };
+
+    \node[c100-speech-callout, fill=c100-orange] (bl) at (0,5)
+      {\parbox{0.4\textwidth}{3here is a thing blah blah blah blah blah blah blah blah} };
+
+    \node[c100-speech-callout] (br) at (8,7)
+      {\parbox{0.4\textwidth}{4here is a thing blah blah blah blah blah blah blah blah} };
+  \end{tikzpicture}
+
+\chapter{Callouts}
+\section{We already have standard callouts with titles}
+\begin{callout-red}{Title}
+Here is a red callout.\\
+
+This can be used to display warning, for example something changing between document versions or to make a point obvious.
+\end{callout-red}
+
+\begin{callout-orange}{Title}
+Here is an orange callout.\\
+
+Not sure where it gets used, but it might?
+\end{callout-orange}
+
+\begin{callout-green}{Title}
+Here is a green callout.\\
+
+Notice how all the colours used in callouts are actually the Camp 100 colors but at different intensities. 
+\end{callout-green}
+
+\section{And now, we have Bold Callouts}
+
+
+\begin{callout-bold-red}
+blah
+\end{callout-bold-red}
+
+\begin{callout-bold-orange}
+blah
+\end{callout-bold-orange}
+
+\begin{callout-bold-green}
+blah\\
+
+which do support multi-line content
+\end{callout-bold-green}
+
+  
+
+\makedocumentbackpage
+
+\end{document}

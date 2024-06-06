@@ -31,7 +31,7 @@ top=20mm,
 \usepackage{graphicx}
 
 \usepackage{tikz}
-\usetikzlibrary{calc}
+\usetikzlibrary{calc, shapes.callouts}
 \usepackage{adjustbox}
 \usepackage{fontawesome}
 \usepackage{enumitem}
@@ -365,7 +365,7 @@ top=20mm,
 
 % callouts
 
-\usepackage[framemethod=default]{mdframed}
+\usepackage[framemethod=TikZ]{mdframed}
 \mdfsetup{skipabove=\topskip,
 skipbelow=\topskip,
 leftmargin=0cm,
@@ -420,3 +420,44 @@ frametitlebackgroundcolor=c100-green!30,
         {
     \end{mdframed}
     }
+
+% bold callouts - to be used sparingly
+
+\mdfdefinestyle{bold-callout-generic}{
+linewidth=0.0em,
+fontcolor=white,
+roundcorner=0.25em,
+}
+\newenvironment{callout-bold-green}
+    {\begin{mdframed}[style=bold-callout-generic, backgroundcolor=c100-green]
+        }
+        {
+    \end{mdframed}
+    }
+\newenvironment{callout-bold-orange}
+    {\begin{mdframed}[style=bold-callout-generic, backgroundcolor=c100-orange]
+        }
+        {
+    \end{mdframed}
+    }
+\newenvironment{callout-bold-red}
+    {\begin{mdframed}[style=bold-callout-generic, backgroundcolor=c100-red]
+        }
+        {
+    \end{mdframed}
+    }
+
+
+% TIKZ
+\tikzset{
+  c100-speech-callout/.style= {color = white,
+                         draw,
+                         shape=rectangle callout,
+                         fill = c100-green,
+                         rounded corners=0.25em,
+                         line width = 0.1em,
+                         inner xsep = 0.5em,
+                         inner ysep = 0.5em,
+                         callout relative pointer={(1.25cm,-1cm)},
+                         callout pointer width=2cm}
+}
