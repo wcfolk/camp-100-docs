@@ -90,7 +90,8 @@ top=20mm,
 % tables
 \renewcommand{\arraystretch}{1.6} % make cells vertically bigger
 
-\newcommand{\tablehead}[1]{\multicolumn{1}{c}{\cellcolor{c100-red}\textcolor{white}{\textbf{#1}}}}
+\newcommand{\tablehead}[1]{\centering\arraybackslash \cellcolor{c100-red}\leavevmode\color{white}\textbf{#1}} % we try this as it actually allows automatic linebreaks in the headings
+% \newcommand{\tablehead}[1]{\multicolumn{1}{c}{\cellcolor{c100-red}\textcolor{white}{\textbf{#1}}}}
 
 
 
