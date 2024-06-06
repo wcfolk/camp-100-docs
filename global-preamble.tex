@@ -10,6 +10,7 @@ total={170mm,257mm},
 left=20mm,
 top=20mm,
 }
+\usepackage[skip=0.7em]{parskip} % put in nice paragraph breaks
 \setlength\parindent{0pt} % get rid of the indent
 \setcounter{tocdepth}{0} % set toc depth to only show chapters
 \setcounter{secnumdepth}{3} % use section numbering for everything up too and including subsubsection
@@ -90,7 +91,7 @@ top=20mm,
 % tables
 \renewcommand{\arraystretch}{1.6} % make cells vertically bigger
 
-\newcommand{\tablehead}[1]{\centering\arraybackslash \cellcolor{c100-red}\leavevmode\color{white}\textbf{#1}} % we try this as it actually allows automatic linebreaks in the headings
+\newcommand{\tablehead}[1]{\centering\arraybackslash \cellcolor{c100-grey}\leavevmode\color{white}\textbf{#1}} % we try this as it actually allows automatic linebreaks in the headings
 % \newcommand{\tablehead}[1]{\multicolumn{1}{c}{\cellcolor{c100-red}\textcolor{white}{\textbf{#1}}}}
 
 
@@ -230,6 +231,7 @@ top=20mm,
               minimum height=11em] () at
               ($(current page.center)+(2,-3)$)
               {\parbox[t]{0.35\textwidth}{\color{white} Find Camp 100 on the internet \begin{itemize}[leftmargin=1.5em]
+                \setlength\itemsep{0.7em}
                 \item[\faInstagram] camp100wcf
                 \item[\faFacebook] camp100wcf
                 \item[\faLink] \texttt{camp100.org.uk}
@@ -249,7 +251,7 @@ top=20mm,
               minimum height=11em] () at
               ($(current page.center)+(-0.95,-8)$)
               {\parbox[t]{0.25\textwidth}{\color{white} Find Woodcraft Folk Online \begin{itemize}[leftmargin=1.5em]
-                \setlength\itemsep{0.1em}
+                \setlength\itemsep{0.7em}
                 \item[\faInstagram] woodcraftfolk
                 \item[\faFacebook] woodcraftfolk
                 \item[\faLink] \texttt{woodcraft.org.uk}
