@@ -7,4 +7,4 @@ This is the web root of the repository which is used to store the Camp 100 Docum
   * [Short Document Template](https://wcfolk.github.io/camp-100-docs/00-templates/dev-doc-article.pdf)
 
 ## Resources
-* [Readme](readme.html)
+For information about this repository - go and view the [repositories wiki](https://github.com/wcfolk/camp-100-docs/wiki)
