@@ -17,12 +17,13 @@ top=20mm,
 
 % document global variables, defined for all documents and used to fill blanks etc
 % this comes at the top of the doc as we use these values throughout the entire preamble
-\newcommand{\documentsetup}[5]{%
+\newcommand{\documentsetup}[6]{%
   \def\documentTitle{#1}
   \def\documentSubtitle{#2}
   \def\publishDate{#3}
   \def\documentID{#4}
-  \def\documentStatus{#5}
+  \def\documentLanguage{#5} % ISO 639 compliant 2 letter language code
+  \def\documentStatus{#6}
 }
 
 
@@ -268,7 +269,7 @@ top=20mm,
               rounded corners=12pt,inner sep=11pt,
               fill=c100-grey] () at
               ($(current page.center)+(-9,-13)$)
-              {\parbox[t]{0.99\textwidth}{\color{white} \footnotesize{\texttt{\documentID}\ (\texttt{\jobname .tex}) compiled at \texttt{\DTMnow}\ with version \texttt{\documentStatus}}}};
+              {\parbox[t]{0.99\textwidth}{\color{white} \footnotesize{\texttt{\documentID}\ (\texttt{\jobname .tex}) compiled at \texttt{\DTMnow}\ with version \texttt{\documentStatus} in language \texttt{\documentLanguage}}}};
     \end{tikzpicture}
   
 
