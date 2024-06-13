@@ -17,13 +17,37 @@ top=20mm,
 
 % document global variables, defined for all documents and used to fill blanks etc
 % this comes at the top of the doc as we use these values throughout the entire preamble
+% we also set here the language settings for the backpage of the document as it's easier to declare this as a global variable
 \newcommand{\documentsetup}[6]{%
-  \def\documentTitle{#1}
-  \def\documentSubtitle{#2}
-  \def\publishDate{#3}
-  \def\documentID{#4}
-  \def\documentLanguage{#5} % ISO 639 compliant 2 letter language code
-  \def\documentStatus{#6}
+    \def\documentTitle{#1}
+    \def\documentSubtitle{#2}
+    \def\publishDate{#3}
+    \def\documentID{#4}
+    \def\documentLanguage{#5} % ISO 639 compliant 2 letter language code
+    \def\documentStatus{#6}
+
+    \ifthenelse{\equal{#5}{en}}{
+        \def\backPageCampInfo{Camp 100, a project by Woodcraft Folk will bring together members of all ages from across the UK to camp together and live by the Woodcraft Folk values for a week in the summer of 2023. The camp celebrates Woodcraft Folk's 100th birthday and will celebrate it's past century while looking forward to the next 100 years.}
+        \def\backPageWcfInfo{Woodcraft Folk is a registered charity in England \& Wales (1148195) and in Scotland (SC039791), and a limited company, registered in England \& Wales (8133727). Registered office: Holyoake House, Hanover Street, Manchester M60 0AS}
+        \def\backPageCampSocials{Find Camp 100 on the internet}
+        \def\backPageWcfSocials{Find Woodcraft Folk online}
+    }%
+    {}% false
+    \ifthenelse{\equal{#5}{fr}}{
+        \usepackage[french]{babel}
+        \def\backPageCampInfo{Camp-French}
+        \def\backPageWcfInfo{Wcf-French}
+        \def\backPageCampSocials{fr}
+        \def\backPageWcfSocials{fr}
+    }%
+    {}% false
+    \ifthenelse{\equal{#5}{es}}{
+        \def\backPageCampInfo{Camp-Spanish}
+        \def\backPageWcfInfo{Wcf-Spanish}
+        \def\backPageCampSocials{es}
+        \def\backPageWcfSocials{es}
+    }%
+    {}% false
 }
 
 
@@ -149,11 +173,10 @@ top=20mm,
         \shade[rounded corners=20pt, left color=c100-red, right color=c100-red] ($(current page.north west)+(20,-9)$) rectangle ++(14,1.2);
         \end{scope}
         
-        % logo image (TODO: Make these the same size)
         \node[inner sep=0pt] () at ($(current page.center)+(5,-11)$){\includegraphics[width=0.45\textwidth]{../global-logo-c100-wide.png}};
         \node[inner sep=0pt] () at ($(current page.center)+(-5,-11)$){\includegraphics[width=0.45\textwidth]{../global-logo-wcf-wide.png}};
         
-        \node at ($(current page.center)+(0,-3.5)$) {{\Huge \documentTitle}};
+        \node[text width=\textwidth,align=center] at ($(current page.center)+(0,-3.5)$) {{\Huge \documentTitle}};
         
         \node[text width=\textwidth,align=center] at ($(current page.center)+(0,-5.5)$) {{\Large{\textit{\documentSubtitle}}} \\[2em] \large \publishDate};
         
@@ -223,7 +246,7 @@ top=20mm,
               fill=c100-green,
               minimum height=11em] () at
               ($(current page.center)+(-9, -3)$)
-              {\parbox[t]{0.55\textwidth}{\color{white} Camp 100, a project by Woodcraft Folk will bring together members of all ages from across the UK to camp together and live by the Woodcraft Folk values for a week in the summer of 2023. The camp celebrates Woodcraft Folk's 100th birthday and will celebrate it's past century while looking forward to the next 100 years.}};
+              {\parbox[t]{0.55\textwidth}{\color{white} \backPageCampInfo}};
 
       % top right box, social media contact for C100
       \node[rectangle, anchor=north west,
@@ -231,7 +254,7 @@ top=20mm,
               fill=c100-red,
               minimum height=11em] () at
               ($(current page.center)+(2,-3)$)
-              {\parbox[t]{0.35\textwidth}{\color{white} Find Camp 100 on the internet\\[-0.5em] \begin{itemize}[leftmargin=1.5em]
+              {\parbox[t]{0.35\textwidth}{\color{white} \backPageCampSocials\\[-0.5em] \begin{itemize}[leftmargin=1.5em]
                 \setlength\itemsep{0.7em}
                 \item[\faInstagram] camp100wcf
                 \item[\faFacebook] camp100wcf
@@ -244,14 +267,14 @@ top=20mm,
               fill=c100-red,
               minimum height=11em] () at
               ($(current page.center)+(-9,-8)$)
-              {\parbox[t]{0.4\textwidth}{\color{white} Woodcraft Folk is a registered charity in England \& Wales (1148195) and in Scotland (SC039791), and a limited company, registered in England \& Wales (8133727). Registered office: Holyoake House, Hanover Street, Manchester M60 0AS}};
+              {\parbox[t]{0.4\textwidth}{\color{white} \backPageWcfInfo}};
       % bottom middle, WCF social media
       \node[rectangle, anchor=north west,
               rounded corners=18pt,inner sep=11pt,
               fill=c100-orange,
               minimum height=11em] () at
               ($(current page.center)+(-0.95,-8)$)
-              {\parbox[t]{0.25\textwidth}{\color{white} Find Woodcraft Folk Online\\[-0.5em] \begin{itemize}[leftmargin=1.5em]
+              {\parbox[t]{0.25\textwidth}{\color{white} \backPageWcfSocials\\[-0.5em] \begin{itemize}[leftmargin=1.5em]
                 \setlength\itemsep{0.7em}
                 \item[\faInstagram] woodcraftfolk
                 \item[\faFacebook] woodcraftfolk
