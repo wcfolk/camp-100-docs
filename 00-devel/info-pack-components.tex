@@ -2,36 +2,28 @@
 
 \input{../global-preamble.tex}
 
-\documentsetup{[doc title]}{[doc subtitle]}{[publish date]}{[internal doc id]}{lang}{[version]}
+\documentsetup{[doc title]}{[doc subtitle]}{[publish date]}{[internal doc id]}{en}{[version]}
 
-\tikzset{
-  c100-speech-callout/.style= {color = white,
-                         draw,
-                         shape=rectangle callout,
-                         fill = c100-green,
-                         rounded corners=0.25em,
-                         line width = 0.1em,
-                         inner xsep = 0.5em,
-                         inner ysep = 0.5em,
-                         callout relative pointer={(1.25cm,-1cm)},
-                         callout pointer width=2cm}
-}
+% \tikzset{
+%   c100-sc-left/.style= {callout relative pointer={(-1.25cm,-1cm)}}
+% }
 
 \begin{document}
 \makedocumenttitlepage
 
 \chapter{The Speech Callouts}
 \begin{tikzpicture}[]
-  \node[c100-speech-callout] (tl) at (0,0)
+  \draw [help lines] grid(11,11);
+  \node[c100-speech-callout, c100-sc-left] at (0,0)
       {\parbox{0.4\textwidth}{1here is a thing blah blah blah blah blah blah blah blah} };
 
-    \node[c100-speech-callout, fill=c100-red] (tr) at (10,2)
+    \node[c100-speech-callout, fill=c100-red] at (10,2)
       {\parbox{0.4\textwidth}{2here is a thing blah blah blah blah blah blah blah blah} };
 
-    \node[c100-speech-callout, fill=c100-orange] (bl) at (0,5)
+    \node[c100-speech-callout, c100-sc-left, fill=c100-orange] at (0,5)
       {\parbox{0.4\textwidth}{3here is a thing blah blah blah blah blah blah blah blah} };
 
-    \node[c100-speech-callout] (br) at (8,7)
+    \node[c100-speech-callout] at (8,7)
       {\parbox{0.4\textwidth}{4here is a thing blah blah blah blah blah blah blah blah} };
   \end{tikzpicture}
 
