@@ -489,3 +489,21 @@ roundcorner=0.25em,
                         callout pointer width=2cm},
     c100-sc-left/.style= {callout relative pointer={(-1.25cm,-1cm)}}
 }
+
+% QR Codes
+\usepackage{qrcode}
+\usepackage{wrapfig}
+
+\newcommand{\insertqrcode}[2]{%
+\begin{wrapfigure}{r}{0.35\textwidth}
+  \centering
+  \begin{mdframed}[linecolor=c100-green, linewidth=0.2em, roundcorner=0.25em, skipabove=0em, skipbelow=0em]
+    \begin{center}
+      \qrcode[height=0.9\textwidth, nolinks, level=M, version=4]{#1}
+      
+      {\small \vspace{0.5em} \href{#1}{#2}}
+    \end{center}
+    
+  \end{mdframed}
+\end{wrapfigure}
+}
