@@ -10,10 +10,16 @@ total={170mm,257mm},
 left=20mm,
 top=20mm,
 }
-\usepackage[skip=0.7em]{parskip} % put in nice paragraph breaks
+\usepackage[skip=0.7em]{parskip} % put in nice paragraph breaksq
 \setlength\parindent{0pt} % get rid of the indent
 \setcounter{tocdepth}{0} % set toc depth to only show chapters
 \setcounter{secnumdepth}{3} % use section numbering for everything up too and including subsubsection
+
+% remove hyphenation at end of line
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
 
 % document global variables, defined for all documents and used to fill blanks etc
 % this comes at the top of the doc as we use these values throughout the entire preamble
@@ -27,7 +33,7 @@ top=20mm,
     \def\documentStatus{#6}
 
     \ifthenelse{\equal{#5}{en}}{
-        \def\backPageCampInfo{Camp 100, a project by Woodcraft Folk will bring together members of all ages from across the UK to camp together and live by the Woodcraft Folk values for a week in the summer of 2023. The camp celebrates Woodcraft Folk's 100th birthday and will celebrate it's past century while looking forward to the next 100 years.}
+        \def\backPageCampInfo{Camp 100, a project by Woodcraft Folk will bring together members of all ages from across the UK to camp together and live by the Woodcraft Folk values for a week in the summer of 2025. The camp celebrates Woodcraft Folk's 100th birthday and will celebrate it's past century while looking forward to the next 100 years.}
         \def\backPageWcfInfo{Woodcraft Folk is a registered charity in England \& Wales (1148195) and in Scotland (SC039791), and a limited company, registered in England \& Wales (8133727). Registered office: Holyoake House, Hanover Street, Manchester M60 0AS}
         \def\backPageCampSocials{Find Camp 100 on the internet}
         \def\backPageWcfSocials{Find Woodcraft Folk online}
@@ -258,7 +264,7 @@ top=20mm,
                 \setlength\itemsep{0.7em}
                 \item[\faInstagram] camp100wcf
                 \item[\faFacebook] camp100wcf
-                \item[\faLink] \texttt{camp100.org.uk}
+                \item[\faLink] camp100.org.uk
               \end{itemize}}};
       
       % bottom left box, WCF charity disclaimer
@@ -278,7 +284,7 @@ top=20mm,
                 \setlength\itemsep{0.7em}
                 \item[\faInstagram] woodcraftfolk
                 \item[\faFacebook] woodcraftfolk
-                \item[\faLink] \texttt{woodcraft.org.uk}
+                \item[\faLink] woodcraft.org.uk
               \end{itemize}}};
       % bottom right box, WCF logo
       \node[rectangle, anchor=north west,
@@ -454,6 +460,7 @@ frametitlebackgroundcolor=c100-green!30,
 linewidth=0.0em,
 fontcolor=white,
 roundcorner=0.25em,
+font=\bfseries
 }
 \newenvironment{callout-bold-green}
     {\begin{mdframed}[style=bold-callout-generic, backgroundcolor=c100-green]
@@ -486,7 +493,8 @@ roundcorner=0.25em,
                         inner xsep = 0.5em,
                         inner ysep = 0.5em,
                         callout relative pointer={(1.25cm,-1cm)},
-                        callout pointer width=2cm},
+                        callout pointer width=2cm,
+                        font=\bfseries},
     c100-sc-left/.style= {callout relative pointer={(-1.25cm,-1cm)}}
 }
 
