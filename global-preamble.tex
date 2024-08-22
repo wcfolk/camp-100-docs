@@ -188,11 +188,14 @@ top=20mm,
         
         \end{tikzpicture}
 \end{titlepage}
+\scalefont{\standardfontscale}
 }
 
 % Document Back Page
 \newcommand{\makedocumentbackpage}{\newpage
+    \scalefont{\backpagefontscale}
   \thispagestyle{empty}
+  
   \begin{tikzpicture}[overlay,remember picture]
 
       % \fill[black!2] (current page.south west) rectangle (current page.north east);
@@ -351,14 +354,25 @@ top=20mm,
 
 \titleformat{\section}
     {\normalfont\LARGE\sffamily\bfseries\color{black}}
-    {\tcbox[colback=c100-green, colframe=c100-green, coltext=white, on line, boxsep=0pt, left=4pt, right=4pt, top=4pt, bottom=4pt]{\thesection}}{0.2em}{#1}
+    {\tcbox[colback=c100-green, colframe=c100-green, coltext=white, on line, boxsep=0pt, left=4pt, right=4pt, top=4pt, bottom=4pt]{\scalefont{\standardfontscale}\thesection}}{0.2em}{\scalefont{\standardfontscale}#1}
 \titleformat{\subsection}
     {\normalfont\Large\sffamily\bfseries\color{black}}
-    {\tcbox[colback=c100-green, colframe=c100-green, coltext=white, on line, boxsep=0pt, left=4pt, right=4pt, top=4pt, bottom=4pt]{\thesubsection}}{0.2em}{#1}
+    {\tcbox[colback=c100-green, colframe=c100-green, coltext=white, on line, boxsep=0pt, left=4pt, right=4pt, top=4pt, bottom=4pt]{\scalefont{\standardfontscale}\thesubsection}}{0.2em}{\scalefont{\standardfontscale}#1}
 \titleformat{\subsubsection}
     {\normalfont\large\sffamily\bfseries\color{black}}
-    {\tcbox[colback=c100-green, colframe=c100-green, coltext=white, on line, boxsep=0pt, left=4pt, right=4pt, top=4pt, bottom=4pt]{\thesubsubsection}}{0.2em}{#1}
+    {\tcbox[colback=c100-green, colframe=c100-green, coltext=white, on line, boxsep=0pt, left=4pt, right=4pt, top=4pt, bottom=4pt]{\scalefont{\standardfontscale}\thesubsubsection}}{0.2em}{\scalefont{\standardfontscale}#1}
 
+% bigger fonts
+% we're being lazy here - only looking at the main content & section headers for these - could come back to be better at a later date.
+\usepackage{scalefnt}
+% set some defaults for non scaled up docs
+\def\backpagefontscale{1}
+\def\standardfontscale{1}
+% enlarge
+\newcommand{\uselargefont}{%
+\def\backpagefontscale{0.5}
+\def\standardfontscale{2}
+}
 
 
 
