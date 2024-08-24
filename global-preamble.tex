@@ -48,6 +48,7 @@ top=20mm,
     }%
     {}% false
     \ifthenelse{\equal{#5}{es}}{
+        \usepackage[french]{babel}
         \def\backPageCampInfo{Camp 100 es un proyecto de Woodcraft Folk que congregar\'a a miembres de todas las edades y de todo el mundo para acampar juntes y vivir seg\'un los valores de Woodcraft Folk durante una semana en el verano de 2025. El campamento conmemorar\'a el centenario del nacimiento de Woodcraft Folk y celebrar\'a su \'ultimo siglo, con la mirada puesta en los próximos 100 a\~nos.}
         \def\backPageWcfInfo{Woodcraft Folk es una organización sin \'animo de lucro registrada en Inglaterra y Gales (1148195) y en Escocia (SC039791), y una sociedad limitada, registrada en Inglaterra y Gales (8133727). Sede social: Holyoake House, Hanover Street, Manchester M60 0AS.}
         \def\backPageCampSocials{Encuentra Camp 100 en Internet}
@@ -328,13 +329,7 @@ top=20mm,
         % line 02
         \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(13,-10)$)}},]
         \shade[rounded corners=20pt, left color=c100-red,right color=c100-red] ($(current page.north west)+(17,-9)$) rectangle ++(15,1.3);
-        \end{scope}
-        % line 03
-        \begin{scope}[transform canvas ={rotate around ={45:($(current page.north west)+(19,-5.65)$)}},]
-        \shade[rounded corners=12pt, left color=c100-orange,right color=c100-orange] ($(current page.north west)+(19,-5)$) rectangle ++(15,0.8);
-        \end{scope}
-        \node[anchor=west,yshift=1.5em, rectangle,
-                rounded corners=18pt,inner sep=11pt,
+        \end{scope},,inner sep=11pt,
                 fill=c100-green] 
                 {\parbox[t]{0.6\textwidth}{\color{white}\chapterlabel#1}};
     \end{tikzpicture}
