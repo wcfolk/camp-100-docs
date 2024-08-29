@@ -41,11 +41,15 @@ top=20mm,
     {}% false
     \ifthenelse{\equal{#5}{fr}}{
         \usepackage[french]{babel}
-        \renewcommand{\contentsname}{Table des matières}
         \def\backPageCampInfo{Le camp 100 est un projet de Woodcraft Folk dans lequel des personnes de tout \^age de partout du monde seront rassembler pour camper tous ensemble et vivre les valeurs de Woodcraft Folk pendant 1 semaine pendant l'\'et\'e 2025. Ce camp c\'el\'ebrera les 100 ans de Woodcraft Folk ainsi que le siècle pass\'e tout en se projetant dans les prochaines 100 ann\'ees.}
         \def\backPageWcfInfo{Woodcraft Folk est une organisation caritative enregistr\'ee en Angleterre et aux Pays de Galles (1148195) et en \'ecosse (SC039791), et une entreprise limit\'ee en Angleterre et en \'ecosse (8133727).\\ Bureau enregistr\'e: Holyoake House, Hanover Street, Manchester M60 0AS.}
         \def\backPageCampSocials{Retrouvez Camp 100 sur notre site internet}
         \def\backPageWcfSocials{Retrouvez Woodcraft Folk sur internet}
+        \addto\captionsfrench{%
+            \renewcommand{\contentsname}%
+                {Sommaire}%
+            }
+
     }%
     {}% false
     \ifthenelse{\equal{#5}{es}}{
